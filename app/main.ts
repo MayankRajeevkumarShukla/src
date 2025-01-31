@@ -1,18 +1,28 @@
-#!/usr/bin/env node
 import { parseCLI } from "./cli";
-import { initializeShell } from "./shell";
 import { logger } from "../utils/logger";
-const main = async () => {
+import { detectShell } from "../utils/env";
+
+async function main() {
   try {
-    logger.info("Starting Terminal IntelliSense...");
     const args = parseCLI(process.argv);
-    const shell = await initializeShell();
-    logger.info(`Detected shell: ${shell}`);
-    logger.info("Features loading...");
+
+    logger.init({
+      verbose: args.verbose as boolean,
+      debug: args.debug as boolean,
+    });
+
+    logger.info("Starting Terminal IntelliSense...");
+
+    // Detect shell
+    const shell = detectShell();
+    logger.info(`Running on shell: ${shell}`);
+
     console.log("Welcome to Terminal IntelliSense!");
-    console.log(`Args: ${JSON.stringify(args)}`);
+
   } catch (error) {
-    logger.error("An error occurred", error);
+    logger.error("An error occurred:", error as Error);
     process.exit(1);
   }
-};
+}
+
+main();
