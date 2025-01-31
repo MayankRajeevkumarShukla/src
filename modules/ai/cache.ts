@@ -19,5 +19,12 @@ export function chacheSuggestion(userInput:string,suggestion:string): void{
  * Caches a new autocomplete suggestion.
  * @param userInput - The original command input.
  * @param suggestion - The AI-generated suggestion.
+ * 
  */
-export function 
+
+/**
+ * Clears the autocomplete cache (useful for debugging or refreshing suggestions).
+ */
+export function clearCache() : void{
+    cache.clear()
+}
