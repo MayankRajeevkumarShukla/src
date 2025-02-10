@@ -12,5 +12,30 @@ export async function fetchCompletion(userInput:string):Promise<string | null>{
     logger.error("GROQ API Key is missing. Set it in the environment variables.")
     return null;
   }
+  try {
+    const respone = await axios.post(
+      GROQ_API_URL,
+      {
+        model:"mixtral-8x7b-32768",
+        prompt:`Suggest the next part of the command : ${userInput}`,
+        max_tokens:20,
+        temperature: 0.3,
+      },
+      {
+        headers:{
+          Authorization:`Bearer ${config.GROQ_API_KEY}`,
+          "Content-Type":"application/json",
+        }
+      }
+    )
+    const suggestion = respone.data?.choices?.[0]?.test?.trim();
+    if(!suggestion) throw new Error("Invalid response from GROQ API")
+      logger.info(`AI Suggestion: ${suggestion}`)
+    return suggestion;
+  } catch (error) {
+    logger.error("Error fetching AI completion",error as Error)
+    return null;
+  }
+
 }
 

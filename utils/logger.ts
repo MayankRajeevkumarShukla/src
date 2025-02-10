@@ -17,6 +17,20 @@ class Logger {
   }
 
   /**
+   * Enables verbose logging.
+   */
+  enableVerbose() {
+    this.verbose = true;
+  }
+
+  /**
+   * Enables debug logging.
+   */
+  enableDebug() {
+    this.debug = true;
+  }
+
+  /**
    * Logs general info messages.
    * @param message - The message to log.
    */
