@@ -10,7 +10,7 @@ export function getCachedSuggestion(userInput:string): string | null{
 /**
  * Caches a new autocomplete suggestion.
  * @param userInput - The original command input.
- * @param suggestion - The AI-generated suggestion.
+ * @param suggestion - The AI-generated suggestion .
  */
 export function chacheSuggestion(userInput:string,suggestion:string): void{
     cache.set(userInput,suggestion)
