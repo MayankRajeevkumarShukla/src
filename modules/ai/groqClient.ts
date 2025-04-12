@@ -13,7 +13,7 @@ export async function fetchCompletion(userInput:string):Promise<string | null>{
     return null;
   }
   try {
-    const respone = await axios.post(
+    const response = await axios.post(
       GROQ_API_URL,
       {
         model:"mixtral-8x7b-32768",
@@ -28,7 +28,8 @@ export async function fetchCompletion(userInput:string):Promise<string | null>{
         }
       }
     )
-    const suggestion = respone.data?.choices?.[0]?.test?.trim();
+    const suggestion = response.data?.choices?.[0]?.text?.trim();
+
     if(!suggestion) throw new Error("Invalid response from GROQ API")
       logger.info(`AI Suggestion: ${suggestion}`)
     return suggestion;
