@@ -1,5 +1,6 @@
 import { logger } from "../../utils/logger";
-import { getCachedSuggestion, chacheSuggestion } from "../ai/cache";
+import { getCachedSuggestion, cacheSuggestion } from "../ai/cache";
+
 import { fetchCompletion } from "../ai/groqClient";
 
 /**
@@ -22,7 +23,7 @@ export async function getAutoComplete(userInput: string): Promise<string | null>
     const suggestion = await fetchCompletion(userInput);
 
     if (suggestion) {
-        chacheSuggestion(userInput, suggestion); // Store suggestion in cache
+      cacheSuggestion(userInput, suggestion); // Store suggestion in cache
       logger.info(`Autocomplete suggestion: ${suggestion}`);
       return suggestion;
     }

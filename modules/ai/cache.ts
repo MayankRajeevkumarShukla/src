@@ -12,7 +12,7 @@ export function getCachedSuggestion(userInput:string): string | null{
  * @param userInput - The original command input.
  * @param suggestion - The AI-generated suggestion .
  */
-export function chacheSuggestion(userInput:string,suggestion:string): void{
+export function cacheSuggestion(userInput:string,suggestion:string): void{
     cache.set(userInput,suggestion)
 }
 /**
