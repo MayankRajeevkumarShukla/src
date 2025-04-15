@@ -17,7 +17,7 @@ export async function fetchCompletion(userInput:string):Promise<string | null>{
       GROQ_API_URL,
       {
         model:"mixtral-8x7b-32768",
-        prompt:`Suggest the next part of the command : ${userInput}`,
+        prompt:`Suggest the next part of the command : ${userInput}` ,
         max_tokens:20,
         temperature: 0.3,
       },
