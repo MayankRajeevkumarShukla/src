@@ -55,15 +55,18 @@ class Logger {
     if (err) console.error(chalk.red(err.stack || err.message));
   }
 
-  /**
-   * Logs debug messages (only if debug mode is enabled).
-   * @param message - The debug message.
-   */
-  debugLog(message: string) {
-    if (this.debug) {
-      console.log(chalk.magenta("[DEBUG]"), message);
-    }
+/**
+ * Logs debug messages (only if debug mode is enabled).
+ * @param message - The debug message.
+ * @param err - Optional error object to log stack trace.
+ */
+debugLog(message: string, err?: Error) {
+  if (this.debug) {
+    console.log(chalk.magenta("[DEBUG]"), message);
+    if (err) console.debug(chalk.gray(err.stack || err.message));
   }
+}
+
 
   /**
    * Logs verbose messages (only if verbose mode is enabled).
