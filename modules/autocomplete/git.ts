@@ -26,7 +26,7 @@ export function getCurrentBranch(): string | null{
       }
 }
 /**
- * Checks if there are uncommitted changes.
+ * Checks if there are uncommitted changes. 
  * @returns {boolean} True if there are changes, false if clean.
  */
 export function hasUncommittedChanges(): boolean {
