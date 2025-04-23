@@ -61,7 +61,7 @@ export function parseCLI(argv: string[]): Record<string, unknown> {
 // Main execution code
 const options = parseCLI(process.argv);
 
-// If no command-line flags are used, start interactive mode
+// sIf no command-line flags are used, start interactive mode
 if (process.argv.length <= 2) {
   startInteractiveCLI();
 }
