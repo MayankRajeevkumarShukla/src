@@ -8,8 +8,8 @@
     "test": "tests"
   },
 "scripts": {
-  "start": "tsx app/cli.ts",
-  "dev": "tsx app/cli.ts",
+  "start": "tsx app/main.ts",
+  "dev": "tsx app/main.ts",
   "build": "tsc",
   "build:run": "tsc && node dist/app/main.js"
 },
